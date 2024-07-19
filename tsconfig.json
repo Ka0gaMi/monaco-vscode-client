@@ -1,25 +1,30 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "WebWorker"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
+    "module": "ES2022",
+    "lib": ["ESNext", "DOM"],
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "strict": true,
+    "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": false,
+    "esModuleInterop": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noImplicitReturns": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "noUncheckedIndexedAccess": true,
+    "preserveConstEnums": true,
+    "paths": {
+      "vscode/vscode/*": ["../dist/main/vscode/src/*"],
+      "vscode/*": ["../dist/main/*"]
+    },
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "vite.config.ts"]
 }
