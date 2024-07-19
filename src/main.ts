@@ -1,4 +1,4 @@
-import Omega365IDE from "./client";
+import Omega365IDE from "./client.ts";
 
 const monaco = Omega365IDE.Monaco;
 const vscode = Omega365IDE.Vscode;
