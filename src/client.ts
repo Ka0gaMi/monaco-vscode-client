@@ -6,8 +6,8 @@ import getKeybindingsServiceOverride, { initUserKeybindings } from '@codingame/m
 import { EnvironmentOverride } from 'vscode/workbench';
 import { workerConfig } from './tools/extHostWorker';
 import { IStorageService, IWorkbenchLayoutService, getService, initialize as initializeMonacoService, createInstance } from 'vscode/services';
-import './src/externalExtensions/volar-2.0.26.vsix';
-import './src/externalExtensions/vscode-typescript-web-0.1.2.vsix';
+import './externalExtensions/volar-2.0.26.vsix';
+import './externalExtensions/vscode-typescript-web-0.1.2.vsix';
 
 /*
 *   Service Overrides
@@ -51,8 +51,8 @@ import getExplorerServiceOverride from '@codingame/monaco-vscode-explorer-servic
 import getWorkbenchServiceOverride, { Parts } from '@codingame/monaco-vscode-workbench-service-override'
 import getQuickAccessServiceOverride from '@codingame/monaco-vscode-quickaccess-service-override'
 
-import defaultKeybindings from './src/user/keybindings.json?raw';
-import defaultConfiguration from './src/user/configuration.json?raw';
+import defaultKeybindings from './user/keybindings.json?raw';
+import defaultConfiguration from './user/configuration.json?raw';
 import * as monaco from 'monaco-editor'
 import * as vscode from "vscode";
 import { BrowserStorageService } from '@codingame/monaco-vscode-storage-service-override'

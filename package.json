@@ -78,7 +78,7 @@
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "@codingame/esbuild-import-meta-url-plugin": "^1.0.2",
-    "@codingame/monaco-vscode-rollup-vsix-plugin": "^7.0.5",
+    "@codingame/monaco-vscode-rollup-vsix-plugin": "^6.0.3",
     "@types/node": "^20.14.10",
     "@types/vscode": "^1.91.0"
   }
