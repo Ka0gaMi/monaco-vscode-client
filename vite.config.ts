@@ -11,9 +11,6 @@ export default defineConfig({
   build: {
     target: "esnext",
     rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, "main.ts"),
-      },
       output: {
         assetFileNames: (assetInfo) => {
           if (filesToRemove.some(file => assetInfo.name?.includes(file))) {
