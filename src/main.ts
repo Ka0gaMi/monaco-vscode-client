@@ -60,39 +60,40 @@ const omega365IDE = new Omega365IDE({
     }
 });
 
-await omega365IDE.initialize(document.getElementById("app")!);
-omega365IDE.registerFileSystemOverlay(1);
+omega365IDE.initialize(document.getElementById("app")!).then(() => {
+    omega365IDE.registerFileSystemOverlay(1);
 
-omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/workspace/test.ts"), "console.log('Hello World!')"));
-omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/workspace/tsconfig.json"), "{\n" +
-    "  \"compilerOptions\": {\n" +
-    "    \"lib\": [\n" +
-    "      \"ES2020\",\n" +
-    "      \"DOM\"\n" +
-    "    ],\n" +
-    "    \"target\": \"ES2020\",\n" +
-    "    \"module\": \"ESNext\",\n" +
-    "    \"moduleResolution\": \"Bundler\",\n" +
-    "    \"allowImportingTsExtensions\": true,\n" +
-    "    \"allowArbitraryExtensions\": true,\n" +
-    "    \"verbatimModuleSyntax\": true,\n" +
-    "    \"noUnusedParameters\": true,\n" +
-    "    \"esModuleInterop\": true,\n" +
-    "    \"noUnusedLocals\": true,\n" +
-    "    \"skipLibCheck\": true,\n" +
-    "    \"noEmit\": true,\n" +
-    "    \"strict\": true\n" +
-    "  },\n" +
-    "  \"include\": [\n" +
-    "    \"src\"\n" +
-    "  ],\n" +
-    "  \"exclude\": [\n" +
-    "    \"node_modules\"\n" +
-    "  ]\n" +
-    "}"));
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/workspace/test.ts"), "console.log('Hello World!')"));
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/workspace/tsconfig.json"), "{\n" +
+        "  \"compilerOptions\": {\n" +
+        "    \"lib\": [\n" +
+        "      \"ES2020\",\n" +
+        "      \"DOM\"\n" +
+        "    ],\n" +
+        "    \"target\": \"ES2020\",\n" +
+        "    \"module\": \"ESNext\",\n" +
+        "    \"moduleResolution\": \"Bundler\",\n" +
+        "    \"allowImportingTsExtensions\": true,\n" +
+        "    \"allowArbitraryExtensions\": true,\n" +
+        "    \"verbatimModuleSyntax\": true,\n" +
+        "    \"noUnusedParameters\": true,\n" +
+        "    \"esModuleInterop\": true,\n" +
+        "    \"noUnusedLocals\": true,\n" +
+        "    \"skipLibCheck\": true,\n" +
+        "    \"noEmit\": true,\n" +
+        "    \"strict\": true\n" +
+        "  },\n" +
+        "  \"include\": [\n" +
+        "    \"src\"\n" +
+        "  ],\n" +
+        "  \"exclude\": [\n" +
+        "    \"node_modules\"\n" +
+        "  ]\n" +
+        "}"));
 
-omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(monaco.Uri.file('/workspace.code-workspace'), JSON.stringify({
-    folders: [{
-        path: `/workspace`
-    }]
-}, null, 2)))
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(monaco.Uri.file('/workspace.code-workspace'), JSON.stringify({
+        folders: [{
+            path: `/workspace`
+        }]
+    }, null, 2)))
+});
