@@ -79,7 +79,7 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
 
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(workspaceUri, JSON.stringify({
         folders: [{
-            path: `/project`
+            path: `/Omega365/project`
         }]
     }, null, 2)))
 });
