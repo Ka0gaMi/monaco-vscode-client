@@ -253,7 +253,7 @@ export default class Omega365IDE {
         }
     }
 
-    async initialize(container: HTMLElement, overrides?: IEditorOverrideServices, workspaceUri?: vscode.Uri): Promise<void> {
+    async initialize(container: HTMLElement, overrides?: IEditorOverrideServices | null, workspaceUri?: vscode.Uri): Promise<void> {
         await Promise.all([
             import('vscode/localExtensionHost'),
             import('@codingame/monaco-vscode-csharp-default-extension'),
@@ -300,7 +300,7 @@ export default class Omega365IDE {
 
         await initializeMonacoService(overrideObject, container, this._constructOptions, this._envOptions);
 
-        reinitializeWorkspace({ id: "empty", configPath: workspaceUri!, uri: vscode.Uri.file("/") });
+        await reinitializeWorkspace({ id: "empty", configPath: workspaceUri!, uri: vscode.Uri.file("/") });
     }
 
     registerExtension(config: {
