@@ -2,7 +2,7 @@ import Omega365IDE from "./client.ts";
 
 const vscode = Omega365IDE.Vscode;
 
-const workspaceUri = vscode.Uri.file("/project.code-workspace")
+const workspaceUri = vscode.Uri.file("/")
 
 const omega365IDE = new Omega365IDE({
     constructOptions: {
