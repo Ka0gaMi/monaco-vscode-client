@@ -1,4 +1,4 @@
-import { RegisteredFileSystemProvider, RegisteredMemoryFile, RegisteredReadOnlyFile, registerFileSystemOverlay, initFile } from '@codingame/monaco-vscode-files-service-override';
+import { RegisteredFileSystemProvider, RegisteredMemoryFile, RegisteredReadOnlyFile, registerFileSystemOverlay } from '@codingame/monaco-vscode-files-service-override';
 import { IWorkbenchConstructionOptions, IEditorOverrideServices, StandaloneServices } from 'vscode/services';
 import { ExtensionHostKind, registerExtension } from 'vscode/extensions';
 import getConfigurationServiceOverride, { initUserConfiguration, reinitializeWorkspace } from '@codingame/monaco-vscode-configuration-service-override'
@@ -253,7 +253,7 @@ export default class Omega365IDE {
         }
     }
 
-    async initialize(container: HTMLElement, overrides?: IEditorOverrideServices | null, workspaceUri?: vscode.Uri): Promise<void> {
+    async initialize(container: HTMLElement, overrides?: IEditorOverrideServices): Promise<void> {
         await Promise.all([
             import('vscode/localExtensionHost'),
             import('@codingame/monaco-vscode-csharp-default-extension'),
@@ -295,12 +295,8 @@ export default class Omega365IDE {
         const overrideObject: IEditorOverrideServices = overrides ?? {
             ...this._defaultServices
         };
-        
-        await initFile(workspaceUri!, JSON.stringify({ folders: [] }, null, 2));
 
         await initializeMonacoService(overrideObject, container, this._constructOptions, this._envOptions);
-
-        await reinitializeWorkspace({ id: "empty", configPath: workspaceUri!, uri: vscode.Uri.file("/") });
     }
 
     registerExtension(config: {
@@ -341,9 +337,15 @@ export default class Omega365IDE {
     registerFileSystemOverlay(priority: number) {
         registerFileSystemOverlay(priority, this._fileSystemProvider);
     }
-    
-    async initFile(workspaceUri: vscode.Uri) {
-        await initFile(workspaceUri, JSON.stringify({ folders: [] }, null, 2));
+
+    async reinitializeWorkspace(pOptions: {
+        id: string,
+        uri: vscode.Uri
+    }) {
+        await reinitializeWorkspace({
+            id: pOptions.id,
+            uri: pOptions.uri
+        })
     }
 }
 

@@ -2,7 +2,7 @@ import Omega365IDE from "./client.ts";
 
 const vscode = Omega365IDE.Vscode;
 
-const workspaceUri = vscode.Uri.file('/project.code-workspace');
+const workspaceUri = vscode.Uri.file('/Omega365/project');
 
 const omega365IDE = new Omega365IDE({
     constructOptions: {
@@ -59,11 +59,16 @@ const omega365IDE = new Omega365IDE({
     }
 });
 
-omega365IDE.initialize(document.getElementById("app")!, null, workspaceUri).then(() => {
+omega365IDE.initialize(document.getElementById("app")!).then(async () => {
     omega365IDE.registerFileSystemOverlay(1);
+    
+    await omega365IDE.reinitializeWorkspace({
+        id: 'project-test',
+        uri: workspaceUri,
+    });
 
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/test.ts"), "console.log('Hello World!')"));
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/tsconfig.json"), "{\n" +
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/Omega365/project/src/test.ts"), "console.log('Hello World!')"));
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("Omega365/project/tsconfig.json"), "{\n" +
         "  \"compilerOptions\": {\n" +
         "    \"lib\": [\n" +
         "      \"ES2020\",\n" +
