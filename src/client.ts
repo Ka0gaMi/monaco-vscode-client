@@ -341,11 +341,13 @@ export default class Omega365IDE {
 
     async reinitializeWorkspace(pOptions: {
         id: string,
-        uri: vscode.Uri
+        uri: vscode.Uri,
+        configUri?: vscode.Uri
     }) {
         await reinitializeWorkspace({
             id: pOptions.id,
-            uri: pOptions.uri
+            uri: pOptions.uri,
+            configPath: pOptions.configUri
         })
     }
 }

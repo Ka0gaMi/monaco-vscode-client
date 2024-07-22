@@ -49,6 +49,7 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
     await omega365IDE.reinitializeWorkspace({
         id: 'project-test',
         uri: projectUri,
+        configUri: workspaceUri,
     });
 
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/Omega365/project/src/test.ts"), "console.log('Hello World!')"));
