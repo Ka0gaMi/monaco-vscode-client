@@ -1,7 +1,7 @@
 import { RegisteredFileSystemProvider, RegisteredMemoryFile, RegisteredReadOnlyFile, registerFileSystemOverlay, initFile } from '@codingame/monaco-vscode-files-service-override';
 import { IWorkbenchConstructionOptions, IEditorOverrideServices, StandaloneServices } from 'vscode/services';
 import { ExtensionHostKind, registerExtension } from 'vscode/extensions';
-import getConfigurationServiceOverride, { initUserConfiguration } from '@codingame/monaco-vscode-configuration-service-override'
+import getConfigurationServiceOverride, { initUserConfiguration, reinitializeWorkspace } from '@codingame/monaco-vscode-configuration-service-override'
 import getKeybindingsServiceOverride, { initUserKeybindings } from '@codingame/monaco-vscode-keybindings-service-override'
 import { EnvironmentOverride } from 'vscode/workbench';
 import { workerConfig } from './tools/extHostWorker';
@@ -253,7 +253,7 @@ export default class Omega365IDE {
         }
     }
 
-    async initialize(container: HTMLElement, overrides?: IEditorOverrideServices, ): Promise<void> {
+    async initialize(container: HTMLElement, overrides?: IEditorOverrideServices, workspaceUri?: vscode.Uri): Promise<void> {
         await Promise.all([
             import('vscode/localExtensionHost'),
             import('@codingame/monaco-vscode-csharp-default-extension'),
@@ -295,8 +295,12 @@ export default class Omega365IDE {
         const overrideObject: IEditorOverrideServices = overrides ?? {
             ...this._defaultServices
         };
+        
+        await initFile(workspaceUri!, JSON.stringify({ folders: [] }, null, 2));
 
         await initializeMonacoService(overrideObject, container, this._constructOptions, this._envOptions);
+
+        reinitializeWorkspace({ id: "empty", configPath: workspaceUri!, uri: vscode.Uri.file("/") });
     }
 
     registerExtension(config: {
