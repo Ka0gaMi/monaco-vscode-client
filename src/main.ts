@@ -44,10 +44,10 @@ const omega365IDE = new Omega365IDE({
 omega365IDE.initialize(document.getElementById("app")!).then(async () => {
     omega365IDE.registerFileSystemOverlay(1);
     
-    // await omega365IDE.reinitializeWorkspace({
-    //     id: 'project-test',
-    //     uri: workspaceUri,
-    // });
+    await omega365IDE.reinitializeWorkspace({
+        id: 'project-test',
+        uri: workspaceUri,
+    });
 
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/Omega365/project/src/test.ts"), "console.log('Hello World!')"));
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/Omega365/project/tsconfig.json"), "{\n" +
