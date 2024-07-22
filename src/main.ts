@@ -83,3 +83,6 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
     //     }]
     // }, null, 2)))
 });
+
+// @ts-ignore
+window["vscode"] = vscode;
