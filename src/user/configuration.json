@@ -23,8 +23,8 @@
   "typescript.preferences.importModuleSpecifierEnding": "js",
   "typescript.check.npmIsInstalled": false,
   "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": false,
-  "typescript.experimental.tsserver.web.typeAcquisition.enabled": true,
-  "typescript.web.projectWideIntellisense.enabled": true,
+  "typescript.tsserver.web.projectWideIntellisense.enabled": true,
+  "typescript.tsserver.web.typeAcquisition.enabled": false,
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.tsserver.experimental.useVsCodeWatcher": false,
   "emmet.includeLanguages": {

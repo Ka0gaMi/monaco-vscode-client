@@ -72,9 +72,8 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
         "    \"strict\": true\n" +
         "  },\n" +
         "  \"include\": [\n" +
-        "    \"src\"\n" +
+        "    \"src\",\n" +
         "    \"node_modules/**/*.d.ts\"\n" +
-        "  ],\n" +
         "  ],\n" +
         "  \"exclude\": []\n" +
         "}"));
