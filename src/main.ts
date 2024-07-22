@@ -68,7 +68,7 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
     });
 
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/Omega365/project/src/test.ts"), "console.log('Hello World!')"));
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("Omega365/project/tsconfig.json"), "{\n" +
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/Omega365/project/tsconfig.json"), "{\n" +
         "  \"compilerOptions\": {\n" +
         "    \"lib\": [\n" +
         "      \"ES2020\",\n" +
@@ -89,15 +89,9 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
         "  },\n" +
         "  \"include\": [\n" +
         "    \"src\"\n" +
+        "    \"node_modules/**/*.d.ts\"\n" +
         "  ],\n" +
-        "  \"exclude\": [\n" +
-        "    \"node_modules\"\n" +
-        "  ]\n" +
+        "  ],\n" +
+        "  \"exclude\": []\n" +
         "}"));
-
-    // omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(monaco.Uri.file('/'), JSON.stringify({
-    //     folders: [{
-    //         path: `/project`
-    //     }]
-    // }, null, 2)))
 });
