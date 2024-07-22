@@ -2,7 +2,7 @@ import Omega365IDE from "./client.ts";
 
 const vscode = Omega365IDE.Vscode;
 
-const workspaceUri = vscode.Uri.file("project.code-workspace")
+const workspaceUri = vscode.Uri.file("/project.code-workspace")
 
 const omega365IDE = new Omega365IDE({
     constructOptions: {
@@ -44,12 +44,12 @@ const omega365IDE = new Omega365IDE({
 omega365IDE.initialize(document.getElementById("app")!).then(async () => {
     omega365IDE.registerFileSystemOverlay(1);
 
-    //const projectUri = vscode.Uri.file('/project');
+    const projectUri = vscode.Uri.file('/project');
     
-    // await omega365IDE.reinitializeWorkspace({
-    //     id: 'project-test',
-    //     uri: projectUri
-    // });
+    await omega365IDE.reinitializeWorkspace({
+        id: 'project-test',
+        uri: projectUri
+    });
 
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/src/test.ts"), "console.log('Hello World!')"));
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/tsconfig.json"), "{\n" +
@@ -79,9 +79,9 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
         "  \"exclude\": []\n" +
         "}"));
 
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(workspaceUri, JSON.stringify({
-        folders: [{
-            path: ``
-        }]
-    }, null, 2)))
+    // omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(workspaceUri, JSON.stringify({
+    //     folders: [{
+    //         path: `/project`
+    //     }]
+    // }, null, 2)))
 });
