@@ -79,9 +79,9 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
         "  \"exclude\": []\n" +
         "}"));
 
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(workspaceUri, JSON.stringify({
-        folders: [{
-            path: `/Omega365/project`
-        }]
-    }, null, 2)))
+    // omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(workspaceUri, JSON.stringify({
+    //     folders: [{
+    //         path: `/Omega365/project`
+    //     }]
+    // }, null, 2)))
 });
