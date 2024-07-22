@@ -63,8 +63,8 @@ const omega365IDE = new Omega365IDE({
 omega365IDE.initialize(document.getElementById("app")!).then(() => {
     omega365IDE.registerFileSystemOverlay(1);
 
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/workspace/test.ts"), "console.log('Hello World!')"));
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/workspace/tsconfig.json"), "{\n" +
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/test.ts"), "console.log('Hello World!')"));
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/tsconfig.json"), "{\n" +
         "  \"compilerOptions\": {\n" +
         "    \"lib\": [\n" +
         "      \"ES2020\",\n" +
@@ -91,9 +91,9 @@ omega365IDE.initialize(document.getElementById("app")!).then(() => {
         "  ]\n" +
         "}"));
 
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(monaco.Uri.file('/workspace.code-workspace'), JSON.stringify({
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(monaco.Uri.file('/'), JSON.stringify({
         folders: [{
-            path: `/workspace`
+            path: `/`
         }]
     }, null, 2)))
 });
