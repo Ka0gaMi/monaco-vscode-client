@@ -60,7 +60,7 @@ const omega365IDE = new Omega365IDE({
     }
 });
 
-omega365IDE.initialize(document.getElementById("app")!);
+await omega365IDE.initialize(document.getElementById("app")!);
 omega365IDE.registerFileSystemOverlay(1);
 
 omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/workspace/test.ts"), "console.log('Hello World!')"));
