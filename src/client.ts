@@ -296,6 +296,8 @@ export default class Omega365IDE {
         const overrideObject: IEditorOverrideServices = overrides ?? {
             ...this._defaultServices
         };
+        
+        this._fileSystemProvider.capabilities = 4;
 
         await initializeMonacoService(overrideObject, container, this._constructOptions, this._envOptions);
     }
