@@ -1,4 +1,4 @@
-import { RegisteredFileSystemProvider, RegisteredMemoryFile, RegisteredReadOnlyFile, registerFileSystemOverlay } from '@codingame/monaco-vscode-files-service-override';
+import { RegisteredFileSystemProvider, RegisteredMemoryFile, RegisteredReadOnlyFile, registerFileSystemOverlay, initFile } from '@codingame/monaco-vscode-files-service-override';
 import { IWorkbenchConstructionOptions, IEditorOverrideServices, StandaloneServices } from 'vscode/services';
 import { ExtensionHostKind, registerExtension } from 'vscode/extensions';
 import getConfigurationServiceOverride, { initUserConfiguration } from '@codingame/monaco-vscode-configuration-service-override'
@@ -336,6 +336,10 @@ export default class Omega365IDE {
 
     registerFileSystemOverlay(priority: number) {
         registerFileSystemOverlay(priority, this._fileSystemProvider);
+    }
+    
+    async initFile(workspaceUri: vscode.Uri) {
+        await initFile(workspaceUri, JSON.stringify({ folders: [] }, null, 2));
     }
 }
 

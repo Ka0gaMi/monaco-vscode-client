@@ -1,8 +1,8 @@
 import Omega365IDE from "./client.ts";
 
-const monaco = Omega365IDE.Monaco;
 const vscode = Omega365IDE.Vscode;
 
+const workspaceUri = vscode.Uri.file('/project.code-workspace');
 
 const omega365IDE = new Omega365IDE({
     constructOptions: {
@@ -15,12 +15,11 @@ const omega365IDE = new Omega365IDE({
         workspaceProvider: {
             trusted: true,
             async open() {
-                window.open(window.location.href)
-                return true
+                return false;
             },
             workspace: {
                 // workspaceUri: workspaceFile
-                workspaceUri: monaco.Uri.file('/workspace.code-workspace')
+                workspaceUri: workspaceUri
             }
         },
         configurationDefaults: {
@@ -38,7 +37,7 @@ const omega365IDE = new Omega365IDE({
             layout: {
                 editors: {
                     orientation: 0,
-                    groups: [{ size: 1 }, { size: 1 }]
+                    groups: [{ size: 1 }]
                 }
             },
             // views: [{
@@ -63,8 +62,8 @@ const omega365IDE = new Omega365IDE({
 omega365IDE.initialize(document.getElementById("app")!).then(() => {
     omega365IDE.registerFileSystemOverlay(1);
 
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/test.ts"), "console.log('Hello World!')"));
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/tsconfig.json"), "{\n" +
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/project/test.ts"), "console.log('Hello World!')"));
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/project/tsconfig.json"), "{\n" +
         "  \"compilerOptions\": {\n" +
         "    \"lib\": [\n" +
         "      \"ES2020\",\n" +
@@ -91,9 +90,9 @@ omega365IDE.initialize(document.getElementById("app")!).then(() => {
         "  ]\n" +
         "}"));
 
-    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(monaco.Uri.file('/'), JSON.stringify({
-        folders: [{
-            path: `/`
-        }]
-    }, null, 2)))
+    // omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(monaco.Uri.file('/'), JSON.stringify({
+    //     folders: [{
+    //         path: `/project`
+    //     }]
+    // }, null, 2)))
 });
