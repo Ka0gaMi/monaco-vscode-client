@@ -345,8 +345,7 @@ export default class Omega365IDE {
     }) {
         await reinitializeWorkspace({
             id: pOptions.id,
-            uri: pOptions.uri,
-            configPath: pOptions.uri
+            uri: pOptions.uri
         })
     }
 }
