@@ -277,6 +277,7 @@ export default class Omega365IDE {
             import('@codingame/monaco-vscode-html-language-features-default-extension'),
             import('@codingame/monaco-vscode-css-language-features-default-extension'),
             import('@codingame/monaco-vscode-markdown-language-features-default-extension'),
+            import('@codingame/monaco-vscode-typescript-language-features-default-extension'),
             import('@codingame/monaco-vscode-emmet-default-extension'),
             initUserConfiguration(this._configuration),
             initUserKeybindings(this._keybindings)

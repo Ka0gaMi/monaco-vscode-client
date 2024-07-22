@@ -60,6 +60,7 @@
     "@codingame/monaco-vscode-theme-seti-default-extension": "^6.0.3",
     "@codingame/monaco-vscode-timeline-service-override": "^6.0.3",
     "@codingame/monaco-vscode-typescript-basics-default-extension": "^6.0.3",
+    "@codingame/monaco-vscode-typescript-language-features-default-extension": "^6.0.3",
     "@codingame/monaco-vscode-update-service-override": "^6.0.3",
     "@codingame/monaco-vscode-user-data-profile-service-override": "^6.0.3",
     "@codingame/monaco-vscode-user-data-sync-service-override": "^6.0.3",
