@@ -18,8 +18,8 @@ const omega365IDE = new Omega365IDE({
                 return false;
             },
             workspace: {
-                // workspaceUri: workspaceFile
-                workspaceUri: workspaceUri
+                workspaceUri: workspaceUri,
+                label: 'TestLabel',
             }
         },
         configurationDefaults: {
@@ -27,34 +27,16 @@ const omega365IDE = new Omega365IDE({
             'window.title': 'o365-ide${separator}${dirty}${activeEditorShort}'
         },
         defaultLayout: {
-            // editors: [{
-            //     uri: monaco.Uri.file('/workspace/test.js'),
-            //     viewColumn: 1
-            // }, {
-            //     uri: monaco.Uri.file('/workspace/test.md'),
-            //     viewColumn: 2
-            // }],
             layout: {
                 editors: {
                     orientation: 0,
                     groups: [{ size: 1 }]
                 }
-            },
-            // views: [{
-            //     id: 'custom-view'
-            // }]
+            }
         },
         productConfiguration: {
             nameShort: 'o365-ide',
             nameLong: 'o365-ide',
-            // extensionsGallery: {
-            //     serviceUrl: 'https://open-vsx.org/vscode/gallery',
-            //     itemUrl: 'https://open-vsx.org/vscode/item',
-            //     resourceUrlTemplate: 'https://open-vsx.org/vscode/unpkg/{publisher}/{name}/{version}/{path}',
-            //     controlUrl: '',
-            //     nlsBaseUrl: '',
-            //     publisherUrl: ''
-            // }
         }
     }
 });
@@ -62,10 +44,10 @@ const omega365IDE = new Omega365IDE({
 omega365IDE.initialize(document.getElementById("app")!).then(async () => {
     omega365IDE.registerFileSystemOverlay(1);
     
-    await omega365IDE.reinitializeWorkspace({
-        id: 'project-test',
-        uri: workspaceUri,
-    });
+    // await omega365IDE.reinitializeWorkspace({
+    //     id: 'project-test',
+    //     uri: workspaceUri,
+    // });
 
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/Omega365/project/src/test.ts"), "console.log('Hello World!')"));
     omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/Omega365/project/tsconfig.json"), "{\n" +

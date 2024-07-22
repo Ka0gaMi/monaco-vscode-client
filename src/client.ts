@@ -93,7 +93,7 @@ export default class Omega365IDE {
     private _configuration: any = defaultConfiguration;
     private _constructOptions: IWorkbenchConstructionOptions;
     private _envOptions: EnvironmentOverride = {
-        userHome: vscode.Uri.file('/')
+        userHome: vscode.Uri.file('/Omega365/project')
     }
     private _defaultServices: IEditorOverrideServices = {
         ...getLogServiceOverride(),
@@ -296,8 +296,6 @@ export default class Omega365IDE {
         const overrideObject: IEditorOverrideServices = overrides ?? {
             ...this._defaultServices
         };
-        
-        this._fileSystemProvider.capabilities = 4;
 
         await initializeMonacoService(overrideObject, container, this._constructOptions, this._envOptions);
     }
