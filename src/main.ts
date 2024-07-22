@@ -18,8 +18,7 @@ const omega365IDE = new Omega365IDE({
                 return false;
             },
             workspace: {
-                workspaceUri: workspaceUri,
-                label: 'TestLabel',
+                workspaceUri: workspaceUri
             }
         },
         configurationDefaults: {
