@@ -27,7 +27,7 @@
   "typescript.tsserver.web.typeAcquisition.enabled": false,
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.tsserver.experimental.useVsCodeWatcher": false,
-  "explorer.openEditors.visible": 5,
+  "explorer.openEditors.minVisible": 2,
   "emmet.includeLanguages": {
     "vue-html": "html",
     "vue": "html"
