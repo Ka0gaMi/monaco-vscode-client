@@ -20,12 +20,18 @@ void getApi().then(async vscode => {
     
     overrideMenu();
     
-    vscode.commands.registerCommand("omega365.save", async (activeEditor) => {
-        console.log("save", activeEditor);
+    vscode.commands.registerCommand("omega365.save", async () => {
+        const activeEditor = vscode.window.activeTextEditor;
+        if (!activeEditor) {
+            return;
+        }
+        
+        console.log(activeEditor);
     });
     
-    vscode.commands.registerCommand("omega365.saveAll", async (pEvent) => {
-        console.log("saveAll", pEvent);
+    vscode.commands.registerCommand("omega365.saveAll", async () => {
+        const dirtyDocuments = vscode.workspace.textDocuments.filter(doc => doc.isDirty);
+        console.log(dirtyDocuments)
     });
 })
 
@@ -56,7 +62,7 @@ function overrideMenu() {
     
     const autosaveAction = MenuRegistry.getMenuItems(MenuId.MenubarFileMenu)
         .find(item => item.group === "5_autosave");
-    
+    debugger;
     if (autosaveAction) {
         autosaveAction.when = ContextKeyExpr.false();
     }
