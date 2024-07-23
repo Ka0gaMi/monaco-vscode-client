@@ -34,9 +34,9 @@ void getApi().then(async vscode => {
             await delay();
         }).then(() => {
             vscode.window.showInformationMessage("File saved successfully!");
-            setTimeout(() => {
-                vscode.commands.executeCommand('notifications.clearAll');
-            }, 2000)
+            // setTimeout(() => {
+            //     vscode.commands.executeCommand('notifications.clearAll');
+            // }, 2000)
         }, (err) => {
             vscode.window.showErrorMessage(err.message);
         });
