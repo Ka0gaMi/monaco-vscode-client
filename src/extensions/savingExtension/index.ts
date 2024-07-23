@@ -49,7 +49,11 @@ void getApi().then(async vscode => {
 })
 
 async function delay() {
-    return new Promise(resolve => setTimeout(resolve, 5000));
+    return new Promise((_resolve, reject) => {
+        setTimeout(() => {
+            reject();
+        }, 2000);
+    })
 }
 
 function overrideMenu() {
