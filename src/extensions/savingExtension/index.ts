@@ -46,6 +46,9 @@ function overrideMenu() {
                 action.when = ContextKeyExpr.false();
             } else if (action.command.id === "workbench.action.files.save") {
                 action.command.id = "omega365.save";
+            } else if (action.command.id === "saveAll") {
+                debugger;
+                action.command.id = "omega365.saveAll";
             }
         }
     }
