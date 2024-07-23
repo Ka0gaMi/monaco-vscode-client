@@ -1,6 +1,5 @@
 import { ExtensionHostKind, registerExtension } from 'vscode/extensions';
-//import FunctionBroadcastChannel from "../../tools/functionBroadcastChannel.ts";
-import { MenuRegistry, MenuId } from 'vscode/monaco';
+import { MenuRegistry, MenuId, ContextKeyExpr } from 'vscode/monaco';
 
 const { getApi } = registerExtension({
     name: 'savingExtension',
@@ -20,10 +19,36 @@ void getApi().then(async vscode => {
     }
     
     overrideMenu();
+    
+    vscode.commands.registerCommand("omega365.save", async (pEvent) => {
+        console.log("save", pEvent);
+    });
+    
+    vscode.commands.registerCommand("omega365.saveAll", async (pEvent) => {
+        console.log("saveAll", pEvent);
+    });
 })
 
 function overrideMenu() {
-    MenuRegistry.getMenuItems(MenuId.MenubarFileMenu).forEach(item => {
-        console.log(item);
-    })
+    const saveActions = MenuRegistry.getMenuItems(MenuId.MenubarFileMenu)
+        .filter(item => item.group === "4_save");
+    
+    for (const action of saveActions) {
+        if ("command" in action && action.command) {
+            if (action.command.id === "workbench.action.files.saveAs") {
+                action.when = ContextKeyExpr.false();
+            } else if (action.command.id === "workbench.action.files.save") {
+                action.command.id = "omega365.save";
+            } else if (action.command.id === "workbench.action.files.saveAll") {
+                action.command.id = "omega365.saveAll";
+            }
+        }
+    }
+    
+    const autosaveAction = MenuRegistry.getMenuItems(MenuId.MenubarFileMenu)
+        .find(item => item.group === "5_autosave");
+    
+    if (autosaveAction) {
+        autosaveAction.when = ContextKeyExpr.false();
+    }
 }
