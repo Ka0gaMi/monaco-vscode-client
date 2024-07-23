@@ -39,21 +39,13 @@ function overrideMenu() {
     const saveActions = MenuRegistry.getMenuItems(MenuId.MenubarFileMenu)
         .filter(item => item.group === "4_save");
     console.log(saveActions);
-    
+    debugger;
     for (const action of saveActions) {
         if ("command" in action && action.command) {
             if (action.command.id === "workbench.action.files.saveAs") {
                 action.when = ContextKeyExpr.false();
             } else if (action.command.id === "workbench.action.files.save") {
                 action.command.id = "omega365.save";
-                action.command.metadata = {
-                    description: "Save",
-                    args: [{
-                        name: "activeEditor",
-                        description: "The active editor"
-                    }],
-                    returns: "void"
-                }
             } else if (action.command.id === "workbench.action.files.saveAll") {
                 action.command.id = "omega365.saveAll";
             }
@@ -62,7 +54,6 @@ function overrideMenu() {
     
     const autosaveAction = MenuRegistry.getMenuItems(MenuId.MenubarFileMenu)
         .find(item => item.group === "5_autosave");
-    debugger;
     if (autosaveAction) {
         autosaveAction.when = ContextKeyExpr.false();
     }
