@@ -20,8 +20,8 @@ void getApi().then(async vscode => {
     
     overrideMenu();
     
-    vscode.commands.registerCommand("omega365.save", async (pEvent) => {
-        console.log("save", pEvent);
+    vscode.commands.registerCommand("omega365.save", async (activeEditor) => {
+        console.log("save", activeEditor);
     });
     
     vscode.commands.registerCommand("omega365.saveAll", async (pEvent) => {
@@ -40,6 +40,14 @@ function overrideMenu() {
                 action.when = ContextKeyExpr.false();
             } else if (action.command.id === "workbench.action.files.save") {
                 action.command.id = "omega365.save";
+                action.command.metadata = {
+                    description: "Save",
+                    args: [{
+                        name: "activeEditor",
+                        description: "The active editor"
+                    }],
+                    returns: "void"
+                }
             } else if (action.command.id === "workbench.action.files.saveAll") {
                 action.command.id = "omega365.saveAll";
             }
