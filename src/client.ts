@@ -7,7 +7,7 @@ import { EnvironmentOverride } from 'vscode/workbench';
 import { workerConfig } from './tools/extHostWorker';
 import { IStorageService, IWorkbenchLayoutService, getService, initialize as initializeMonacoService, createInstance } from 'vscode/services';
 import './externalExtensions/volar-2.0.26.vsix';
-import '../../node-packages/omega365-vscode-wrapper/src/externalExtensions/vscode-typescript-web-0.1.2.vsix';
+import './externalExtensions/vscode-typescript-web-0.1.2.vsix';
 
 /*
 *   Service Overrides
