@@ -51,7 +51,7 @@ void getApi().then(async vscode => {
 async function delay() {
     return new Promise((_resolve, reject) => {
         setTimeout(() => {
-            reject();
+            reject("Failed to save file");
         }, 2000);
     })
 }
