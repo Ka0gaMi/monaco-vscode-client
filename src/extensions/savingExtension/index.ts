@@ -32,6 +32,7 @@ void getApi().then(async vscode => {
 function overrideMenu() {
     const saveActions = MenuRegistry.getMenuItems(MenuId.MenubarFileMenu)
         .filter(item => item.group === "4_save");
+    console.log(saveActions);
     
     for (const action of saveActions) {
         if ("command" in action && action.command) {
