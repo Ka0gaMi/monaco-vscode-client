@@ -31,10 +31,7 @@ void getApi().then(async vscode => {
             location: vscode.ProgressLocation.Notification,
             title: "Saving file..."
         }, async () => {
-            setTimeout(() => {
-                console.log("done")
-                return Promise.resolve();
-            }, 5000)
+            await delay();
         }).then(null, (err) => {
             vscode.window.showErrorMessage(err.message);
         });
@@ -45,6 +42,10 @@ void getApi().then(async vscode => {
         console.log(dirtyDocuments)
     });
 })
+
+async function delay() {
+    return new Promise(resolve => setTimeout(resolve, 5000));
+}
 
 function overrideMenu() {
     const saveActions = MenuRegistry.getMenuItems(MenuId.MenubarFileMenu)
