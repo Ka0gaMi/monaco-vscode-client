@@ -30,9 +30,14 @@ void getApi().then(async vscode => {
         vscode.window.withProgress({
             location: vscode.ProgressLocation.Notification,
             title: "Saving file..."
-        }, async () => {
+        }, async (progress) => {
+            progress.report({ increment: 30 });
             await delay();
-        }).then(null, (err) => {
+            progress.report({ increment: 70, message: "File saved successfully!" });
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+        }).then(() => {
+            vscode.window.showInformationMessage("File saved successfully!");
+        }, (err) => {
             vscode.window.showErrorMessage(err.message);
         });
     });
