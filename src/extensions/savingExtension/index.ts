@@ -27,6 +27,17 @@ void getApi().then(async vscode => {
         }
         
         console.log(activeEditor);
+        vscode.window.withProgress({
+            location: vscode.ProgressLocation.Notification,
+            title: "Saving file..."
+        }, async () => {
+            setTimeout(() => {
+                console.log("done")
+                return Promise.resolve();
+            }, 5000)
+        }).then(null, (err) => {
+            vscode.window.showErrorMessage(err.message);
+        });
     });
     
     vscode.commands.registerCommand("omega365.saveAll", async () => {
