@@ -1,4 +1,4 @@
-import { /*RegisteredFileSystemProvider,*/ RegisteredMemoryFile, RegisteredReadOnlyFile, registerFileSystemOverlay } from '@codingame/monaco-vscode-files-service-override';
+import { RegisteredFileSystemProvider, RegisteredMemoryFile, RegisteredReadOnlyFile, registerFileSystemOverlay } from '@codingame/monaco-vscode-files-service-override';
 import { IWorkbenchConstructionOptions, IEditorOverrideServices, StandaloneServices } from 'vscode/services';
 import { ExtensionHostKind, registerExtension } from 'vscode/extensions';
 import getConfigurationServiceOverride, { initUserConfiguration, reinitializeWorkspace } from '@codingame/monaco-vscode-configuration-service-override'
@@ -83,7 +83,7 @@ export default class Omega365IDE {
     static get RegisteredReadOnlyFile() {
         return RegisteredReadOnlyFile;
     }
-    private _fileSystemProvider: CustomFileSystem = new CustomFileSystem();
+    private _fileSystemProvider: RegisteredFileSystemProvider = new RegisteredFileSystemProvider(false);
     private static _workerLoaders: Partial<Record<string, WorkerLoader>> = {
         editorWorkerService: () => new Worker(new URL('monaco-editor/esm/vs/editor/editor.worker.js', import.meta.url), { type: 'module' }),
         textMateWorker: () => new Worker(new URL('@codingame/monaco-vscode-textmate-service-override/worker', import.meta.url), { type: 'module' }),
@@ -189,7 +189,7 @@ export default class Omega365IDE {
         'getQuickAccessServiceOverride': getQuickAccessServiceOverride
     }
 
-    get fileSystemProvider(): CustomFileSystem {
+    get fileSystemProvider(): RegisteredFileSystemProvider {
         return this._fileSystemProvider;
     }
 
