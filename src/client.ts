@@ -8,7 +8,6 @@ import { workerConfig } from './tools/extHostWorker';
 import { IStorageService, IWorkbenchLayoutService, getService, initialize as initializeMonacoService, createInstance } from 'vscode/services';
 import './externalExtensions/volar-2.0.26.vsix';
 import './externalExtensions/vscode-typescript-web-0.1.2.vsix';
-import CustomFileSystem from "./utils/customFileSystem/CustomFileSystem.ts";
 
 /*
 *   Service Overrides

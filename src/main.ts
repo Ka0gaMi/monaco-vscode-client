@@ -50,34 +50,32 @@ omega365IDE.initialize(document.getElementById("app")!).then(async () => {
         uri: projectUri
     });
 
-    // omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/project/src/test.ts"), "console.log('Hello World!')"));
-    // omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/project/tsconfig.json"), "{\n" +
-    //     "  \"compilerOptions\": {\n" +
-    //     "    \"lib\": [\n" +
-    //     "      \"ES2020\",\n" +
-    //     "      \"DOM\"\n" +
-    //     "    ],\n" +
-    //     "    \"target\": \"ES2020\",\n" +
-    //     "    \"module\": \"ESNext\",\n" +
-    //     "    \"moduleResolution\": \"Bundler\",\n" +
-    //     "    \"allowImportingTsExtensions\": true,\n" +
-    //     "    \"allowArbitraryExtensions\": true,\n" +
-    //     "    \"verbatimModuleSyntax\": true,\n" +
-    //     "    \"noUnusedParameters\": true,\n" +
-    //     "    \"esModuleInterop\": true,\n" +
-    //     "    \"noUnusedLocals\": true,\n" +
-    //     "    \"skipLibCheck\": true,\n" +
-    //     "    \"noEmit\": true,\n" +
-    //     "    \"strict\": true\n" +
-    //     "  },\n" +
-    //     "  \"include\": [\n" +
-    //     "    \"src\",\n" +
-    //     "    \"node_modules/**/*.d.ts\"\n" +
-    //     "  ],\n" +
-    //     "  \"exclude\": []\n" +
-    //     "}"));
-
-    await omega365IDE.fileSystemProvider.registerFile(vscode.Uri.file("/project/src/test.ts"), "console.log('Hello World!')");
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/project/src/test.ts"), "console.log('Hello World!')"));
+    omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(vscode.Uri.file("/project/tsconfig.json"), "{\n" +
+        "  \"compilerOptions\": {\n" +
+        "    \"lib\": [\n" +
+        "      \"ES2020\",\n" +
+        "      \"DOM\"\n" +
+        "    ],\n" +
+        "    \"target\": \"ES2020\",\n" +
+        "    \"module\": \"ESNext\",\n" +
+        "    \"moduleResolution\": \"Bundler\",\n" +
+        "    \"allowImportingTsExtensions\": true,\n" +
+        "    \"allowArbitraryExtensions\": true,\n" +
+        "    \"verbatimModuleSyntax\": true,\n" +
+        "    \"noUnusedParameters\": true,\n" +
+        "    \"esModuleInterop\": true,\n" +
+        "    \"noUnusedLocals\": true,\n" +
+        "    \"skipLibCheck\": true,\n" +
+        "    \"noEmit\": true,\n" +
+        "    \"strict\": true\n" +
+        "  },\n" +
+        "  \"include\": [\n" +
+        "    \"src\",\n" +
+        "    \"node_modules/**/*.d.ts\"\n" +
+        "  ],\n" +
+        "  \"exclude\": []\n" +
+        "}"));
 
     // omega365IDE.fileSystemProvider.registerFile(new Omega365IDE.RegisteredMemoryFile(workspaceUri, JSON.stringify({
     //     folders: [{
