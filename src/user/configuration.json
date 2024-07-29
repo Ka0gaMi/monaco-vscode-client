@@ -27,6 +27,7 @@
   "typescript.tsserver.web.typeAcquisition.enabled": false,
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.tsserver.experimental.useVsCodeWatcher": false,
+  "typescript-web.dts.globals": [],
   "emmet.includeLanguages": {
     "vue-html": "html",
     "vue": "html"

@@ -45,11 +45,26 @@ const omega365IDE = new Omega365IDE({
 const broadcast = new FunctionBroadcastChannel({
     id: 'Omega365-vscode-wrapper',
     functions: {
-        "getTypesFlat": async () => {
-            return JSON.stringify({});
+        "getTypesFlat": async (value) => {
+            try {
+                const res = await fetch(`https://data.jsdelivr.com/v1/package/npm/${value}@3.4.34/flat`)
+                if (res.status === 200) {
+                    return await res.json();
+                }
+            } catch (e) {
+                return JSON.stringify({})
+            }
         },
-        "getTypes": async () => {
-            return "";
+        "getTypes": async (value) => {
+            try {
+                const res = await fetch(`https://cdn.jsdelivr.net/npm/${value}`);
+                if (res.status === 200) {
+                    return await res.text();
+                }
+                return "";
+            } catch {
+                return "";
+            }
         }
     }
 });
