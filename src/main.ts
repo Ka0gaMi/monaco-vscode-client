@@ -1,4 +1,5 @@
 import Omega365IDE from "./client.ts";
+import FunctionBroadcastChannel from "./tools/functionBroadcastChannel.ts";
 
 const vscode = Omega365IDE.Vscode;
 
@@ -36,6 +37,19 @@ const omega365IDE = new Omega365IDE({
         productConfiguration: {
             nameShort: 'o365-ide',
             nameLong: 'o365-ide',
+        }
+    }
+});
+
+// @ts-ignore
+const broadcast = new FunctionBroadcastChannel({
+    id: 'Omega365-vscode-wrapper',
+    functions: {
+        "getTypesFlat": async (value) => {
+            return JSON.stringify({});
+        },
+        "getTypes": async (value) => {
+            return "";
         }
     }
 });
