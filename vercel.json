@@ -23,7 +23,7 @@
       "headers": [
         {
           "key": "Content-Type",
-          "value": ""
+          "value": "text/plain; charset=utf-8"
         }
       ]
     }
