@@ -18,8 +18,9 @@ export default defineConfig({
           } else if (filesToChange.some(file => assetInfo.name?.includes(file))) {
             return "assets/[name][extname]"
           } else if (assetInfo.name?.includes("main")) {
-            console.log(assetInfo);
             return "[name][extname]"
+          } else if (assetInfo.name?.includes("vscode-typescript-web")) {
+            return "assets/[name][extname]"
           }
           return "assets/[name]-[hash][extname]"
         },
