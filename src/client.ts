@@ -327,6 +327,7 @@ export default class Omega365IDE {
     async getLayoutService(): Promise<IWorkbenchLayoutService> {
         return await getService(IWorkbenchLayoutService);
     }
+    
 
     async clearStorage(): Promise<void> {
         await (await getService(IStorageService) as BrowserStorageService).clear();
