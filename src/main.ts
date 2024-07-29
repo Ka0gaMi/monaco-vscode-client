@@ -45,10 +45,10 @@ const omega365IDE = new Omega365IDE({
 const broadcast = new FunctionBroadcastChannel({
     id: 'Omega365-vscode-wrapper',
     functions: {
-        "getTypesFlat": async (value) => {
+        "getTypesFlat": async () => {
             return JSON.stringify({});
         },
-        "getTypes": async (value) => {
+        "getTypes": async () => {
             return "";
         }
     }
