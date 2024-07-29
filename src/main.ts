@@ -3,7 +3,7 @@ import FunctionBroadcastChannel from "./tools/functionBroadcastChannel.ts";
 
 const vscode = Omega365IDE.Vscode;
 
-const workspaceUri = vscode.Uri.file("/project.code-workspace")
+const workspaceUri = vscode.Uri.file("/workspace.code-workspace")
 
 const omega365IDE = new Omega365IDE({
     constructOptions: {
