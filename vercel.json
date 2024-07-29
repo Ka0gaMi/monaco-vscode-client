@@ -19,7 +19,7 @@
       ]
     },
     {
-      "source": "/assets/vscode-typescript-web-0.1.2.vsix/lib.*",
+      "source": "/assets/vscode-typescript-web-0.1.2.vsix/lib(.*)",
       "headers": [
         {
           "key": "Content-Type",
